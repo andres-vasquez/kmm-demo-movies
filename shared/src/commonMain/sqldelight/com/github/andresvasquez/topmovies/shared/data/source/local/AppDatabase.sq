@@ -1,0 +1,22 @@
+CREATE TABLE Movie (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    original_title TEXT NOT NULL,
+    overview TEXT,
+    adult INTEGER AS Boolean DEFAULT 0,
+    popularity REAL,
+    poster_path TEXT,
+    release_date INTEGER,
+    rating REAL,
+    genre_ids TEXT
+);
+
+insertMovie:
+INSERT INTO Movie(id, original_title, overview, adult, popularity, poster_path, release_date, rating, genre_ids)
+VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+deleteMovies:
+DELETE FROM Movie;
+
+getMovieById:
+SELECT * FROM Movie
+WHERE id = ?;
