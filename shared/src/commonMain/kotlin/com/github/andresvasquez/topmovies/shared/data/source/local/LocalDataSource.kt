@@ -1,7 +1,6 @@
 package com.github.andresvasquez.topmovies.shared.data.source.local
 
 import com.github.andresvasquez.topmovies.shared.data.Result
-import java.lang.NullPointerException
 
 class LocalDataSource internal constructor(databaseDriverFactory: DatabaseDriverFactory) :
     LocalDataSourceI {
