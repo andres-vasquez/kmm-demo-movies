@@ -18,17 +18,21 @@ class MovieRepository(
     @Throws(Exception::class)
     override suspend fun getPopularMovies(): Result<List<PopularMovie>> {
         val cachedMovies = local.getMovies()
-        val lang = Constants.DEFAULT_LANGUAGE
+        val lang = prefs.getLanguage()
         val results = remote.getPopularMovies(lang)
-        if (results is Result.Success) {
-            return results.also {
-                local.deleteMovies()
-                local.insertMovies(it.data.asDatabaseModel())
+        return when {
+            results is Result.Success -> {
+                results.also {
+                    local.deleteMovies()
+                    local.insertMovies(it.data.asDatabaseModel())
+                }
             }
-        } else if (cachedMovies is Result.Success) {
-            return Result.Success(cachedMovies.data.asDomainModel())
-        } else {
-            return results
+            cachedMovies is Result.Success -> {
+                Result.Success(cachedMovies.data.asDomainModel())
+            }
+            else -> {
+                results
+            }
         }
     }
 

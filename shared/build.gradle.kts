@@ -58,6 +58,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-logging:$ktorVersion")
                 implementation("com.squareup.sqldelight:runtime:$sqlDelightVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.1.1")
+                implementation("com.russhwolf:multiplatform-settings-no-arg:0.7")
             }
         }
         val commonTest by getting {
