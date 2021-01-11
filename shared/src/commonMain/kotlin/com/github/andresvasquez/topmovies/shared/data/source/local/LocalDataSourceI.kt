@@ -7,7 +7,7 @@ interface LocalDataSourceI {
 
     fun getMovieById(movieId: Long): Result<MovieDTO>
 
-    fun insertMovies(movies: List<MovieDTO>)
+    fun insertMovies(movies: Array<MovieDTO>)
 
     fun deleteMovies()
 }

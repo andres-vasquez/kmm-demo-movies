@@ -23,13 +23,6 @@ class MoviesApi {
     }
 
     suspend fun getPopularMovies(lang: String): MoviesResponse {
-        /*val path = "${Constants.BASE_URL}3/movie/popular"
-        val builder = httpClient.get<HttpRequestBuilder> {
-            url(path)
-            header(HttpHeaders.ContentType, ContentType.Application.Json)
-            parameter("api_key", Constants.API_KEY)
-            parameter("lang", lang)
-        }*/
         val path2 = "${Constants.BASE_URL}3/movie/popular?lang=${lang}&api_key=${Constants.API_KEY}"
         return httpClient.get(path2)
     }

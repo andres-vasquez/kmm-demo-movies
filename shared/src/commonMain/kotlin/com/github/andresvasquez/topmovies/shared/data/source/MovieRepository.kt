@@ -5,6 +5,8 @@ import com.github.andresvasquez.topmovies.shared.data.source.prefs.PrefsDataSour
 import com.github.andresvasquez.topmovies.shared.data.source.remote.RemoteDataSourceI
 import com.github.andresvasquez.topmovies.shared.data.source.remote.model.Genre
 import com.github.andresvasquez.topmovies.shared.data.Result
+import com.github.andresvasquez.topmovies.shared.data.source.local.asDatabaseModel
+import com.github.andresvasquez.topmovies.shared.data.source.local.asDomainModel
 import com.github.andresvasquez.topmovies.shared.utils.Constants
 
 class MovieRepository(
@@ -15,10 +17,19 @@ class MovieRepository(
 
     @Throws(Exception::class)
     override suspend fun getPopularMovies(): Result<List<PopularMovie>> {
-        //TODO implement prefs
-        //val lang = prefs.getLanguage()
+        val cachedMovies = local.getMovies()
         val lang = Constants.DEFAULT_LANGUAGE
-        return remote.getPopularMovies(lang).also { }
+        val results = remote.getPopularMovies(lang)
+        if (results is Result.Success) {
+            return results.also {
+                local.deleteMovies()
+                local.insertMovies(it.data.asDatabaseModel())
+            }
+        } else if (cachedMovies is Result.Success) {
+            return Result.Success(cachedMovies.data.asDomainModel())
+        } else {
+            return results
+        }
     }
 
     override suspend fun getGenres(genres: Set<Int>): List<Genre> {

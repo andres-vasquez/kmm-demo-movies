@@ -59,7 +59,7 @@ class LocalDataSource internal constructor(databaseDriverFactory: DatabaseDriver
         }
     }
 
-    override fun insertMovies(movies: List<MovieDTO>) {
+    override fun insertMovies(movies: Array<MovieDTO>) {
         dbQuery.transaction {
             movies.forEach { movie ->
                 dbQuery.insertMovie(
