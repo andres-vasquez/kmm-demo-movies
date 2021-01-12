@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.github.andresvasquez.topmovies.shared.data.source.PopularMovie" />
+
+        <variable
+            name="clickListener"
+            type="com.github.andresvasquez.topmovies.androidApp.ui.movielist.MovieClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{()-> clickListener.onClick(movie)}"
+        android:orientation="vertical"
+        android:padding="@dimen/space_xs">
+
+        <TextView
+            android:id="@+id/item_title_text"
+            style="@style/movie_title_style"
+            android:text="@{movie.displayName}"
+            tools:text="My movie" />
+
+        <ImageView
+            android:id="@+id/item_movie_image"
+            moviePicture="@{movie}"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:adjustViewBounds="true"
+            android:background="@color/gray"
+            tools:srcCompat="@drawable/ic_broken_image" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4">
+
+                <RatingBar
+                    android:id="@+id/popularity_rating_bar"
+                    style="?android:attr/ratingBarStyleSmall"
+                    movieRanking="@{movie}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:progressTint="@color/colorPrimary"
+                    android:secondaryProgressTint="@color/colorDark"
+                    android:stepSize="0.1" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/release_date_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="end"
+                android:text="@{movie.releaseDate}" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_movie_overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="5"
+            android:text="@{movie.overview}"
+            tools:text="This is an overview of a movie" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:onClick="@{()-> clickListener.onClick(movie)}"
+            android:paddingBottom="@dimen/space_md"
+            android:text="@string/view_more"
+            android:textColor="@color/colorDark"
+            android:textStyle="bold|italic" />
+    </LinearLayout>
+</layout>

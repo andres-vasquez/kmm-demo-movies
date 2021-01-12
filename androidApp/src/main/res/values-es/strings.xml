@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Películas Top</string>
+
+    <!-- Global -->
+    <string name="save">Guardar</string>
+    <string name="edit">Editar</string>
+    <string name="about">Acerca de la App</string>
+    <string name="preferences">Preferencias</string>
+    <string name="pick_image">Seleccionar imagen</string>
+    <string name="permissions_error">Revise los permisos de la App por favor</string>
+    <string name="view_more">Más info</string>
+    <string name="back">Atrás</string>
+
+    <!-- Splash -->
+    <string name="splash_welcome">Bienvenid@! Deslice hacia arriba para continuar</string>
+    <string name="splash_enter">Ingresa en la app</string>
+    <string name="splash_title">Que comience el Show!</string>
+
+    <!-- Login -->
+    <string name="title">Bienvenid@, por favor ingrese sus datos</string>
+    <string name="login_display_name">Nombre</string>
+    <string name="login_language">Lenguaje de la App</string>
+
+    <string name="error_login_display_name">Por favor, ingresa tu nombre</string>
+
+    <!-- Binding -->
+    <string name="movie_description">Imagen de la película %s</string>
+    <string name="movie_description_error">La imagen de la película aún no se muestra</string>
+
+    <!-- About us -->
+    <string name="about_title">Acerca de Películas Top!</string>
+    <string name="about_content">Sigueme en https://github/andres-vasquez</string>
+
+    <!-- Titles -->
+    <string name="windows_splash">Películas Top</string>
+    <string name="windows_login">Preferencias de usuario</string>
+    <string name="windows_list">Películas</string>
+    <string name="windows_detail">Detalles</string>
+</resources>

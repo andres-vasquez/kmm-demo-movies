@@ -12,6 +12,7 @@ buildscript {
     }
 
     val kotlinVersion = "1.4.10"
+    val navigationVersion = "2.3.2"
     val sqlDelightVersion: String by project
 
     dependencies {
@@ -19,6 +20,7 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
         classpath("org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion")
         classpath("com.squareup.sqldelight:gradle-plugin:$sqlDelightVersion")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion")
     }
 }
 

@@ -10,6 +10,8 @@ import io.ktor.client.features.logging.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 
+enum class ApiStatus { LOADING, ERROR, DONE }
+
 class MoviesApi {
     private val httpClient = HttpClient {
         install(JsonFeature) {

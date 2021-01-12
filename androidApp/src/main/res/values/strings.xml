@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Top Movies</string>
+
+    <!-- Global -->
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="about">About the app</string>
+    <string name="preferences">Preferences</string>
+    <string name="pick_image">Pick image</string>
+    <string name="permissions_error">Please review the app permissions</string>
+    <string name="view_more">View More</string>
+    <string name="back">Back</string>
+
+    <!-- Splash -->
+    <string name="splash_welcome">Welcome! Swipe Up to continue</string>
+    <string name="splash_enter">Enter in the App</string>
+    <string name="splash_title">Show Time!</string>
+
+    <!-- Login -->
+    <string name="title">Welcome, please enter your basic data to suggest the Best Movies</string>
+    <string name="login_display_name">Enter display name</string>
+    <string name="login_language">App\'s Language</string>
+
+    <string name="error_login_display_name">Please enter your name</string>
+
+    <!-- Binding -->
+    <string name="movie_description">Movie\'s image: %s</string>
+    <string name="movie_description_error">This is Movie\'s image, showing nothing yet</string>
+
+    <!-- About us -->
+    <string name="about_title">Popular Movies About!</string>
+    <string name="about_content">Follow me at https://github/andres-vasquez</string>
+
+    <!-- Titles -->
+    <string name="windows_splash">Popular Movies</string>
+    <string name="windows_login">User preferences</string>
+    <string name="windows_list">Movies</string>
+    <string name="windows_detail">Detail</string>
+</resources>
