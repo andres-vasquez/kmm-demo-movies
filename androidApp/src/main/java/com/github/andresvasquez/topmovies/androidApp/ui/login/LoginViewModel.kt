@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.kmmapp.androidApp.ui.base.BaseViewModel
 import com.example.kmmapp.androidApp.ui.base.NavigationCommand
 import com.github.andresvasquez.topmovies.androidApp.R
+import com.github.andresvasquez.topmovies.androidApp.utils.asParcelable
 import com.github.andresvasquez.topmovies.androidApp.utils.validateUser
 import com.github.andresvasquez.topmovies.shared.MoviesSharedI
 import com.github.andresvasquez.topmovies.shared.data.source.User
@@ -45,7 +46,7 @@ class LoginViewModel(val app: Application, private val shared: MoviesSharedI) :
         if (validateUser(user)) {
             shared.saveUserPrefs(user)
             navigationCommand.value = NavigationCommand.To(
-                LoginFragmentDirections.actionLoginFragmentToMovieListFragment(user)
+                LoginFragmentDirections.actionLoginFragmentToMovieListFragment(user.asParcelable())
             )
         } else {
             showSnackBarInt.value = R.string.error_login_display_name

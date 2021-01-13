@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.github.andresvasquez.topmovies.androidApp.ui.base.BaseFragment
 import com.github.andresvasquez.topmovies.androidApp.databinding.FragmentListBinding
 import androidx.navigation.fragment.findNavController
+import com.github.andresvasquez.topmovies.androidApp.utils.asParcelable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MovieListFragment : BaseFragment() {
@@ -24,7 +25,7 @@ class MovieListFragment : BaseFragment() {
             val navController = findNavController()
             navController.navigate(
                 MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(
-                    movie
+                    movie.asParcelable()
                 )
             )
         })

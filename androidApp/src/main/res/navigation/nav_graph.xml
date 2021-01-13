@@ -44,7 +44,7 @@
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="movie"
-            app:argType="com.github.andresvasquez.topmovies.shared.data.source.PopularMovie" />
+            app:argType="com.github.andresvasquez.topmovies.androidApp.utils.ParcelablePopularMovie" />
     </fragment>
     <fragment
         android:id="@+id/movieListFragment"
@@ -60,6 +60,6 @@
             app:popEnterAnim="@anim/slide_in_left" />
         <argument
             android:name="user"
-            app:argType="com.github.andresvasquez.topmovies.shared.data.source.User" />
+            app:argType="com.github.andresvasquez.topmovies.androidApp.utils.ParcelableUser" />
     </fragment>
 </navigation>

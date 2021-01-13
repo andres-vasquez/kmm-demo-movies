@@ -36,15 +36,22 @@ class MovieRepository(
         }
     }
 
-    override suspend fun getGenres(genres: Set<Int>): List<Genre> {
-        TODO("Not yet implemented")
+    override suspend fun getGenres(genres: Set<Int>): Result<List<Genre>> {
+        val lang = prefs.getLanguage()
+        val results = remote.getGenres(lang)
+        return if (results is Result.Success) {
+            val filtered = results.data.filter { it -> genres.contains(it.id) }
+            Result.Success(filtered)
+        } else {
+            results
+        }
     }
 
     override fun getUserPrefs(): User? {
-        TODO("Not yet implemented")
+        return prefs.getUserPrefs()
     }
 
     override fun saveUserPrefs(user: User) {
-        TODO("Not yet implemented")
+        prefs.saveUserPrefs(user)
     }
 }

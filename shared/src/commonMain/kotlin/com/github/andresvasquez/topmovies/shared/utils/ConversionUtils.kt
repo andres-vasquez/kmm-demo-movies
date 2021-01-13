@@ -1,5 +1,7 @@
 package com.github.andresvasquez.topmovies.shared.utils
 
+import com.github.andresvasquez.topmovies.shared.data.source.PopularMovie
+import com.github.andresvasquez.topmovies.shared.data.source.User
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atStartOfDayIn
@@ -25,4 +27,15 @@ fun convertListToString(genres: List<Int>): String {
 fun convertStringToList(genresAsString: String): List<Int> {
     val obj = Json.decodeFromString<List<Int>>(genresAsString)
     return obj
+}
+
+fun convertUserToString(user: User): String {
+    return Json.encodeToString(user)
+}
+
+fun convertStringToUser(userAsString: String): User? {
+    if (userAsString.isNullOrEmpty()) {
+        return null
+    }
+    return Json.decodeFromString(userAsString)
 }

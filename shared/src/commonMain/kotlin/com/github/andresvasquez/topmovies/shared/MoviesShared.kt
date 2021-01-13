@@ -29,18 +29,25 @@ class MoviesShared(databaseDriverFactory: DatabaseDriverFactory) : MoviesSharedI
     }
 
     override fun getUserPrefs(): User? {
-        TODO("Not yet implemented")
+        return repository.getUserPrefs()
     }
 
     override fun saveUserPrefs(user: User) {
-        TODO("Not yet implemented")
+        repository.saveUserPrefs(user)
     }
 
-    override suspend fun getGenres(genres: Set<Int>): List<Genre> {
-        TODO("Not yet implemented")
+    override suspend fun getGenres(genresIds: Set<Int>): List<Genre> {
+        return when (val result = repository.getGenres(genresIds)) {
+            is Result.Success -> {
+                result.data
+            }
+            is Result.Error -> {
+                throw result.exception
+            }
+        }
     }
 
     override suspend fun refreshData() {
-        TODO("Not yet implemented")
+
     }
 }

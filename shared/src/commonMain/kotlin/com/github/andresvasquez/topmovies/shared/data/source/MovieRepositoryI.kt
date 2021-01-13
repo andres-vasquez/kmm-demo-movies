@@ -6,7 +6,7 @@ import com.github.andresvasquez.topmovies.shared.data.Result
 interface MovieRepositoryI {
     fun getUserPrefs(): User?
     fun saveUserPrefs(user: User)
-    suspend fun getGenres(genres: Set<Int>): List<Genre>
+    suspend fun getGenres(genres: Set<Int>): Result<List<Genre>>
 
     @Throws(Exception::class)
     suspend fun getPopularMovies(): Result<List<PopularMovie>>

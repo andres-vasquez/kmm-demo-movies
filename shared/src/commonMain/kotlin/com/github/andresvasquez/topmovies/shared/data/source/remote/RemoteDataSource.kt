@@ -28,7 +28,6 @@ class RemoteDataSource : RemoteDataSourceI {
             } else {
                 Result.Success(listOf())
             }
-            //Result.Success(listOf())
         } catch (e: Exception) {
             Result.Error(e)
         }

@@ -4,8 +4,12 @@ import android.app.Application
 import android.os.Build
 import androidx.work.*
 import com.example.kmmapp.androidApp.work.MoviesRefreshWorker
+import com.github.andresvasquez.topmovies.androidApp.ui.login.LoginViewModel
+import com.github.andresvasquez.topmovies.androidApp.ui.moviedetail.MovieDetailViewModel
+import com.github.andresvasquez.topmovies.androidApp.ui.movielist.MovieListViewModel
 import com.github.andresvasquez.topmovies.androidApp.ui.splash.SplashViewModel
 import com.github.andresvasquez.topmovies.shared.MoviesShared
+import com.github.andresvasquez.topmovies.shared.MoviesSharedI
 import com.github.andresvasquez.topmovies.shared.data.source.local.DatabaseDriverFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -64,8 +68,11 @@ class MoviesApp : Application() {
         val myModule = module {
             //Declare a ViewModel - be later inject into Fragment with dedicated injector using by viewModel()
             viewModel { SplashViewModel(get(), get()) }
+            viewModel { LoginViewModel(get(), get()) }
+            viewModel { MovieListViewModel(get(), get()) }
+            viewModel { MovieDetailViewModel(get(), get()) }
             single {
-                MoviesShared(DatabaseDriverFactory(this@MoviesApp)) as MoviesShared
+                MoviesShared(DatabaseDriverFactory(this@MoviesApp)) as MoviesSharedI
             }
         }
 

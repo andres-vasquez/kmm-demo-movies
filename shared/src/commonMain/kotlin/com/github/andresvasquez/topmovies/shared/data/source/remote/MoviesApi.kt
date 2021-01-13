@@ -30,12 +30,8 @@ class MoviesApi {
     }
 
     suspend fun getGenres(lang: String): GenresResponse {
-        val path = "${Constants.BASE_URL}3/genre/movie/list"
-        val builder = httpClient.get<HttpRequestBuilder> {
-            url(path)
-            parameter("api_key", Constants.API_KEY)
-            parameter("lang", lang)
-        }
-        return httpClient.get(builder)
+        val path2 =
+            "${Constants.BASE_URL}3/genre/movie/list?lang=${lang}&api_key=${Constants.API_KEY}"
+        return httpClient.get(path2)
     }
 }

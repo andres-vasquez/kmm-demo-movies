@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import com.github.andresvasquez.topmovies.androidApp.ui.base.BaseFragment
 import com.github.andresvasquez.topmovies.androidApp.R
 import com.github.andresvasquez.topmovies.androidApp.databinding.FragmentDetailBinding
+import com.github.andresvasquez.topmovies.androidApp.utils.ParcelablePopularMovie
+import com.github.andresvasquez.topmovies.androidApp.utils.asOriginal
 import com.github.andresvasquez.topmovies.shared.data.source.PopularMovie
 import com.github.andresvasquez.topmovies.shared.data.source.remote.model.Genre
 import com.google.android.material.chip.Chip
@@ -18,7 +20,8 @@ class MovieDetailFragment : BaseFragment() {
 
     private val selectedMovie: PopularMovie by lazy {
         val args = MovieDetailFragmentArgs.fromBundle(requireArguments())
-        args.movie
+        val movie: ParcelablePopularMovie = args.movie
+        movie.asOriginal()
     }
 
     override fun onCreateView(
